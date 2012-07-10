@@ -7,13 +7,15 @@ use Symfony\Component\HttpFoundation\Response;
 
 $app->get('/', function() use ($app) {
     $data = array(
-		array("a" => "coucou",
-		      "b" => "david"),
-		array("a" => "bye",
-		      "b" => "julien")
+		array("a" => "david",
+		      "b" => rand()),
+		array("a" => "julien",
+		      "b" => rand())
 
 			);
-    return $app['twig']->render('index.html.twig');
+    return $app['twig']->render('index.html.twig', array('data' => $data));
 });
-    
+
 return $app;
+
+
