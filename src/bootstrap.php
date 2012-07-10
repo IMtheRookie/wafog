@@ -12,7 +12,6 @@ $app['debug'] = true;
 
 $app->register(new TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/templates',
-    'twig.options' => array('cache' => __DIR__.'/../cache'),
 ));
 
 $app->register(new DoctrineServiceProvider);
@@ -24,11 +23,5 @@ $app['db.options'] = array(
     'user'     => 'root',
     'password' => '',
 );
-
-$app->before(function() use ($app) {
-    $app['db.dumb'] = $app->share(function($app) {
-        return new DumbRepository($app['db']); 
-    });
-});
 
 return $app;

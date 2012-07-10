@@ -1,19 +1,19 @@
 <?php
 
 $app = require __DIR__.'/bootstrap.php';
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-$app->get('/', function() use ($app){
-	
-	Response("everything ok");
 
-<!--    
-    $app['db.wafog_blog']->insert(array('a' => rand(), 'b' => rand()));
-    $data = $app['db.wafog_blog']->findAll();
-    
-    return $app['twig']->render('index.html.twig', array('data' => $data));
-    
+$app->get('/', function() use ($app) {
+    $data = array(
+		array("a" => "coucou",
+		      "b" => "david"),
+		array("a" => "bye",
+		      "b" => "julien")
 
+			);
+    return $app['twig']->render('index.html.twig');
 });
-
+    
 return $app;
-    -->
